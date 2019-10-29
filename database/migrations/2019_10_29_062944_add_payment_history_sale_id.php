@@ -13,7 +13,9 @@ class AddPaymentHistorySaleId extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('payment_history', function (Blueprint $table) {
+            $table->foreign('sale_id')->on('sales')->references("id")->onDelete('set null');
+        });
     }
 
     /**
