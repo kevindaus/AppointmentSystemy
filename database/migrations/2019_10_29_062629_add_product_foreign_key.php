@@ -13,7 +13,9 @@ class AddProductForeignKey extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('credit_applications', function (Blueprint $table) {
+            $table->foreign('product')->on('products')->references('id')->onDelete('set null');
+        });
     }
 
     /**
