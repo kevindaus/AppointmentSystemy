@@ -13,7 +13,9 @@ class AddCoMakerForeignKey extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('credit_applications', function (Blueprint $table) {
+            $table->foreign('co_maker_id')->on('co_makers')->references('id')->onDelete('set null');
+        });
     }
 
     /**
