@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePaymentHistory extends Migration
+class CreatePaymentHistoryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,8 +15,10 @@ class CreatePaymentHistory extends Migration
     {
         Schema::create('payment_history', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger("sale_id")->nullable();
             $table->timestamps();
         });
+
     }
 
     /**
