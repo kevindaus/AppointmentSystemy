@@ -13,8 +13,24 @@ class CreateCoMakersTable extends Migration
      */
     public function up()
     {
-        Schema::create('co_makers', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create("co_makers", function (Blueprint $table) {
+            $table->bigIncrements("id");
+            $table->string("title");
+            $table->string("first_name");
+            $table->string("middle_name")->nullable();
+            $table->string("last_name");
+            $table->string("address")->nullable();
+            $table->string("relationship")->nullable();
+            $table->string("occupation")->nullable();
+            $table->string("contact_number")->nullable();
+            $table->string("legal_document_presented");
+            $table->string("identification_number")->nullable();
+            $table->string("drivers_license")->nullable();
+
+            $table->string("first_signature_specimen");// filename containing the signature
+            $table->string("second_signature_specimen");// filename containing the signature
+            $table->string("third_signature_specimen");// filename containing the signature
+
             $table->timestamps();
         });
     }
@@ -29,3 +45,4 @@ class CreateCoMakersTable extends Migration
         Schema::dropIfExists('co_makers');
     }
 }
+
