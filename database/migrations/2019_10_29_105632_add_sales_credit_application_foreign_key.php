@@ -13,7 +13,12 @@ class AddSalesCreditApplicationForeignKey extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('sales', function (Blueprint $table) {
+            $table->foreign("credit_application_id")
+                ->on("credit_applications")
+                ->references("id")
+                ->onDelete("set null");
+        });
     }
 
     /**
