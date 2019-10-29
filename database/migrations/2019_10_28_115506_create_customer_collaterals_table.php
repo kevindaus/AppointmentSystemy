@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCustomerCollaterlas extends Migration
+class CreateCustomerCollateralsTable extends Migration
 {
     /**
      * Run the migrations.
