@@ -13,7 +13,9 @@ class AddBranchManagerForeignKey extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('credit_applications', function (Blueprint $table) {
+            $table->foreign('branch_manager')->on('staffs')->references('id')->onDelete('set null');
+        });
     }
 
     /**
