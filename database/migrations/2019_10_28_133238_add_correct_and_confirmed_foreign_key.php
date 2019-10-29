@@ -13,7 +13,9 @@ class AddCorrectAndConfirmedForeignKey extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('credit_applications', function (Blueprint $table) {
+            $table->foreign('correct_and_confirmed_by')->on('staffs')->references("id")->onDelete('set null');
+        });
     }
 
     /**
