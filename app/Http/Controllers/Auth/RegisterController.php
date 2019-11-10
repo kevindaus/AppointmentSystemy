@@ -71,18 +71,6 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
-    /**
-     * Show the application registration form.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function showRegistrationForm(FormBuilder $formBuilder)
-    {
-        /* customer registration form */
-        $form = $formBuilder->create(CustomerForm::class, [
-            'method'=>'POST',
-            'url'=>route('customers.store')
-        ]);
-        return view('auth.register')->with(compact('form'));
-    }
+
+
 }

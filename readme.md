@@ -6,7 +6,10 @@ password
 credit application allow to choose between , 
 existing customer 
 or
-new customer 
+new customer
+
+step 1
+ 
 
 @TODO 
 finish
@@ -56,10 +59,10 @@ As Admin
 @TODO - Wizard type application process
 
 Step 1
-credit-application/customer/new
+application-form/customer/new
 if new customer
 else 
-credit-application/customer/new-application 
+application-form/customer/new-application 
 
 step 2 
 

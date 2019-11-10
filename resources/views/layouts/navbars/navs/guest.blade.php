@@ -11,10 +11,10 @@
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navigation">
       <ul class="navbar-nav">
-        <li class="nav-item @if ($activePage == 'register') active @endif">
-          <a href="{{ route('register') }}" class="nav-link">
+        <li class="nav-item @if ($activePage == 'apply_credit_application') active @endif">
+          <a href="{{ route('apply_credit_application') }}" class="nav-link">
             <i class="fa fa-folder-open"></i>
-            {{ __("Credit Application Form") }}
+            {{ __("Application Form") }}
           </a>
         </li>
         <li class="nav-item @if ($activePage == 'login') active @endif ">

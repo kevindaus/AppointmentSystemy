@@ -16,6 +16,7 @@ class CreateCreditApplicationsTable extends Migration
         Schema::create('credit_applications', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('customer_id');
+            $table->string("application_status")->default("pending");// [pending , approved , denied]
             $table->string("basis")->nullable();
             $table->string("terms")->nullable();
             $table->string("options")->nullable();
@@ -31,8 +32,8 @@ class CreateCreditApplicationsTable extends Migration
             $table->string("dp_rebate")->nullable();
             $table->string("dp_net")->nullable();
             $table->string("status_of_customer")->nullable(); // [loyal , occasional , new]
-            $table->time('time_interviewed');
-            $table->time('time_walked_in');
+            $table->time('time_interviewed')->nullable();
+            $table->time('time_walked_in')->nullable();
             $table->string('name_of_referral')->nullable();
 
             $table->date('date_received_by_ci')->nullable();

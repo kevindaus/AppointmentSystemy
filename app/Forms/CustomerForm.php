@@ -19,19 +19,19 @@ class CustomerForm extends Form
                     'Dr.' =>'Dr.'
                 ],
                 'empty_value' => '=== Select title ===',
-                'wrapper' => ['class' => 'col-2'],
+
             ])
             ->add('first_name', 'text',[
-                'wrapper' => ['class' => 'col-3'],
+
             ])
             ->add('middle_name', 'text',[
-                'wrapper' => ['class' => 'col-3'],
+
             ])
             ->add('last_name', 'text',[
-                'wrapper' => ['class' => 'col-3'],
+
             ])
             ->add('suffix', 'text',[
-                'wrapper' => ['class' => 'col-1'],
+
             ])
 
             ->add('birthday', 'date')
@@ -63,10 +63,10 @@ class CustomerForm extends Form
                 'label'=>'Relatives'
             ])
             ->add('fathers_name', 'text',[
-                'wrapper' => ['class' => 'col-6'],
+
             ])
             ->add('mothers_name', 'text',[
-                'wrapper' => ['class' => 'col-6'],
+
             ])
             ->add(uniqid(), 'legend',[
                 'label'=>'Contact Information'

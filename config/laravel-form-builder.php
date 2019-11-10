@@ -3,7 +3,7 @@
 return [
 
     'defaults' => [
-        'wrapper_class'       => 'form-group col-3 pt-2',
+        'wrapper_class'       => 'form-group col-12 pt-2',
         'wrapper_error_class' => '',
         'label_class'         => '',
         'field_class'         => 'form-control',

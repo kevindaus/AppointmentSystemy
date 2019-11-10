@@ -8,6 +8,9 @@ class CreditApplication extends Model
 {
     protected $guarded = [];
     protected $dates = ['due_date', 'request_due_date'];
+    const STATUS_PENDING = 'pending';
+    const STATUS_APPROVED = 'approved';
+    const STATUS_DENIED = 'denied';
 
     public function customer()
     {
