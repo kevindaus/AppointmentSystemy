@@ -15,6 +15,7 @@ class CreateCreditApplicationsTable extends Migration
     {
         Schema::create('credit_applications', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('customer_id');
             $table->string("basis")->nullable();
             $table->string("terms")->nullable();
             $table->string("options")->nullable();
@@ -45,6 +46,7 @@ class CreateCreditApplicationsTable extends Migration
             $table->text("recommendation_of_branch_manager")->nullable();
             $table->timestamps();
         });
+
     }
 
     /**

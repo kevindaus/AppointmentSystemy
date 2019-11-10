@@ -13,7 +13,9 @@ class AddCreditApplicationTableForeignKey extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('credit_applications', function (Blueprint $table) {
+            $table->foreign('customer_id')->on('customers')->references('id');
+        });
     }
 
     /**

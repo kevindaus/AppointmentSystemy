@@ -17,6 +17,7 @@ class CreateSalesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('customer_id')->nullable();
             $table->unsignedBigInteger('credit_application_id')->nullable();
+            $table->unsignedBigInteger('product_id')->nullable();
             $table->float('total_amount')->default(0);
             $table->float('tax_rate')->default(0);
             $table->string('status')->default('ongoing_payment');

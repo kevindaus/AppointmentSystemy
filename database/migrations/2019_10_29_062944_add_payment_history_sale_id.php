@@ -15,6 +15,7 @@ class AddPaymentHistorySaleId extends Migration
     {
         Schema::table('payment_history', function (Blueprint $table) {
             $table->foreign('sale_id')->on('sales')->references("id")->onDelete('set null');
+            $table->foreign('received_by')->on('staffs')->references('id')->onDelete('set null');
         });
     }
 

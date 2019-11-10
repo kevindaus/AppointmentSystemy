@@ -18,6 +18,11 @@ class AddSalesCreditApplicationForeignKey extends Migration
                 ->on("credit_applications")
                 ->references("id")
                 ->onDelete("set null");
+
+            $table->foreign('product_id')
+                ->on('products')
+                ->references('id')
+                ->onDelete('set null');
         });
     }
 

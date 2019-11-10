@@ -18,7 +18,7 @@ class CreatePaymentHistoryTable extends Migration
             $table->unsignedBigInteger("sale_id")->nullable();
             $table->float('amount');
             $table->date('date_received');
-            $table->unsignedBigInteger('staff_id');//staff who received the payment
+            $table->unsignedBigInteger('received_by')->nullable();//staff who received the payment
             $table->timestamps();
         });
 
