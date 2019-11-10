@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddReceivedByForeignKey extends Migration
+class CreateCreditApplicationProductTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class AddReceivedByForeignKey extends Migration
      */
     public function up()
     {
-        Schema::table('credit_applications', function (Blueprint $table) {
-            $table->foreign('received_by_ci')->on('staffs')->references('id')->onDelete('set null');
+        Schema::create('credit_application_product', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->timestamps();
         });
     }
 
@@ -25,6 +26,6 @@ class AddReceivedByForeignKey extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('credit_application_product');
     }
 }

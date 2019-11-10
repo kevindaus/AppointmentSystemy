@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddCoMakerForeignKey extends Migration
+class AddCreditApplicationProductTableForeignKey extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,7 @@ class AddCoMakerForeignKey extends Migration
      */
     public function up()
     {
-        Schema::table('credit_applications', function (Blueprint $table) {
-            $table->foreign('co_maker_id')->on('co_makers')->references('id')->onDelete('set null');
-        });
+        //
     }
 
     /**
