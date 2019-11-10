@@ -1,3 +1,34 @@
+
+admin@appointmentsystem.com
+password
+
+@TODO -
+credit application allow to choose between , 
+existing customer 
+or
+new customer 
+
+@TODO 
+finish
+Credit application flow
+
+@TODO 
+= allow admin to see and approve a credit application
+- after approved , 
+
+@TODO - 
+- allow admin to see list of approved credit application
+
+
+@TODO - 
+show list of overdue payment
+    - overdue amount , customer name , customer contact number , a button that will send notification 
+     
+
+@TODO - 
+system auto notification setting , 
+    - 
+
 @TODO -
 As Admin
     Staff record
