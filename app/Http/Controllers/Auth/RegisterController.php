@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Forms\CustomerForm;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Kris\LaravelFormBuilder\FormBuilder;
 
 class RegisterController extends Controller
 {
@@ -68,5 +70,19 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+    /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm(FormBuilder $formBuilder)
+    {
+        /* customer registration form */
+        $form = $formBuilder->create(CustomerForm::class, [
+            'method'=>'POST',
+            'url'=>route('customers.store')
+        ]);
+        return view('auth.register')->with(compact('form'));
     }
 }
