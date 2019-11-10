@@ -12,11 +12,16 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect(route('login'));
 });
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('due-payment', 'PaymentController@due_payment')->name("due-payment");
+Route::resource('credit-applications', 'CreditApplicationController');
+Route::resource('customers', 'CustomerController');
+Route::resource('sales', 'SalesController');
+Route::resource('products', 'ProductController');
+Route::resource('staffs', 'StaffController');
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::resource('user', 'UserController', ['except' => ['show']]);
@@ -25,4 +30,3 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
 	Route::get('{page}', ['as' => 'page.index', 'uses' => 'PageController@index']);
 });
-
