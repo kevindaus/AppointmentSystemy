@@ -2,7 +2,7 @@
     'namePage' => 'Reset Password',
     'class' => 'login-page sidebar-mini ',
     'activePage' => '',
-    'backgroundImage' => asset('assets') . "/img/bg14.jpg",
+    'backgroundImage' => "/images/honda_logo.png"
 ])
 
 @section('content')

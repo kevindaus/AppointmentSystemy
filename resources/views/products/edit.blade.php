@@ -1,12 +1,13 @@
 @extends('layouts.app', [
-    'namePage' => 'Register page',
-    'activePage' => 'register',
+    'namePage' => 'Back',
+    'namePageLink' => route('products.index'),
+    'activePage' => 'product',
     'backgroundImage' => "/images/honda_logo.png",
 ])
 
 @section('content')
     <div class="panel-header panel-header-md">
-        <h1 class="text-white text-center">{{ __('Credit Application Form') }}</h1>
+        <h1 class="text-white text-center">{{ __('Update Product') }}</h1>
     </div>
     <div class="content">
         <div class="container">
@@ -17,10 +18,12 @@
                         <div class="card-header ">
                         </div>
                         <div class="card-body">
+                            @include('alerts.success')
                             <br>
-                            <form method="POST" action="{{ route('customers.store') }}" class="row text-left">
+                            <form method="POST" action="{{ route('products.edit',['product'=>$product]) }}" class="row text-left">
                                 @csrf
-                                {!! form($form) !!}
+                                @method("PUT")
+                                {!! form($updateProductForm) !!}
                             </form>
                         </div>
                     </div>
