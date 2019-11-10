@@ -13,7 +13,10 @@ class AddForeignKeyOnCreditApplicationCoMakerTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('credit_application_co_maker', function (Blueprint $table) {
+            $table->foreign('credit_application_id')->on('credit_applications')->references('id');
+            $table->foreign('co_maker_id')->on('co_makers')->references('id');
+        });
     }
 
     /**

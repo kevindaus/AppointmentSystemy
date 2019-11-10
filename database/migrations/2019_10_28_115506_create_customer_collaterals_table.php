@@ -18,7 +18,7 @@ class CreateCustomerCollateralsTable extends Migration
             $table->string("name");
             $table->string("supporting_document")->nullable();//
             $table->float("estimated_market_value")->default(0);
-            $table->unsignedBigInteger("owner_id")->nullable();
+            $table->unsignedBigInteger("customer_id")->nullable();
             $table->timestamps();
         });
     }

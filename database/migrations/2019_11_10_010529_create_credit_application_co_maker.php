@@ -15,6 +15,8 @@ class CreateCreditApplicationCoMaker extends Migration
     {
         Schema::create('credit_application_co_maker', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('credit_application_id');
+            $table->unsignedBigInteger('co_maker_id');
             $table->timestamps();
         });
     }

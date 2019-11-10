@@ -26,7 +26,6 @@ class CreateCoMakersTable extends Migration
             $table->string("legal_document_presented");
             $table->string("identification_number")->nullable();
             $table->string("drivers_license")->nullable();
-
             $table->string("first_signature_specimen");// filename containing the signature
             $table->string("second_signature_specimen");// filename containing the signature
             $table->string("third_signature_specimen");// filename containing the signature

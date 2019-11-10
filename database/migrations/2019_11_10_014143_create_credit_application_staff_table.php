@@ -15,6 +15,8 @@ class CreateCreditApplicationStaffTable extends Migration
     {
         Schema::create('credit_application_staff', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('credit_application_id');
+            $table->unsignedBigInteger('staff_id');
             $table->timestamps();
         });
     }

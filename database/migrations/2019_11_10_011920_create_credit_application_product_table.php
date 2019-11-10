@@ -15,6 +15,8 @@ class CreateCreditApplicationProductTable extends Migration
     {
         Schema::create('credit_application_product', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('credit_application_id');
+            $table->unsignedBigInteger('product_id');
             $table->timestamps();
         });
     }

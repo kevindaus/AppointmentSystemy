@@ -14,7 +14,7 @@ class AddCustomerChildrenForeignKey extends Migration
     public function up()
     {
         Schema::table('customers_children', function (Blueprint $table) {
-            $table->foreign('parent_id')->references('id')->on('customers');
+            $table->foreign('customer_id')->references('id')->on('customers');
         });
     }
 

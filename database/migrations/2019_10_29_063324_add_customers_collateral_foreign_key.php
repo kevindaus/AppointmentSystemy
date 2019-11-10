@@ -14,7 +14,7 @@ class AddCustomersCollateralForeignKey extends Migration
     public function up()
     {
         Schema::table('customers_collateral', function (Blueprint $table) {
-            $table->foreign('owner_id')->on('customers')->references("id")->onDelete('set null');
+            $table->foreign('customer_id')->on('customers')->references("id")->onDelete('set null');
         });
     }
 

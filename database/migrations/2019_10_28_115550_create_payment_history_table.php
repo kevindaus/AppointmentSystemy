@@ -16,6 +16,9 @@ class CreatePaymentHistoryTable extends Migration
         Schema::create('payment_history', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger("sale_id")->nullable();
+            $table->float('amount');
+            $table->date('date_received');
+            $table->unsignedBigInteger('staff_id');//staff who received the payment
             $table->timestamps();
         });
 
