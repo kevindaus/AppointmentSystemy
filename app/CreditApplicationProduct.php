@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class CreditApplicationProduct extends Model
 {
+    protected $table = 'credit_application_product';
     public function product()
     {
         return $this->belongsTo(Product::class);
