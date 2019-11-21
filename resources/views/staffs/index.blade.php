@@ -6,6 +6,13 @@
     'backgroundImage' => "/images/honda_logo.png",
   ])
 
+@push('js')
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#staff-table').DataTable();
+        });
+    </script>
+@endpush
 @section('content')
     <div class="panel-header panel-header-sm">
     </div>
@@ -29,7 +36,7 @@
                     <div class="card-body">
 
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table" id="staff-table">
                                 <thead class=" text-primary">
                                 <th>
                                     Name

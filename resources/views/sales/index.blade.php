@@ -1,6 +1,6 @@
 @extends('layouts.app', [
     'namePage' => 'Sales',
-    'namePageLink' => route('customers.index'),
+    'namePageLink' => route('sales.index'),
     'class' => 'sidebar-mini',
     'activePage' => 'sale',
     'backgroundImage' => "/images/honda_logo.png",
@@ -43,7 +43,9 @@
                                             {{ $currentSale->id  }}
                                         </td>
                                         <td>
-                                            {{ $currentSale->credit_application()->firstOrFail()->customer->getFullName() }}
+                                            <a href="{{route('customers.show',['customer'=>$currentSale->getCreditApplication()->customer])}}">
+                                                {{ $currentSale->getCreditApplication()->customer->getFullName()  }}
+                                            </a>
                                         </td>
                                         <td>
                                             % {{ number_format($currentSale->tax_rate,2) }}
