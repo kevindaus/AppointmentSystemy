@@ -16,7 +16,7 @@
                     <br>
                     <div class="card card-signup text-center">
                         <div class="card-header ">
-                            <h1>Step 3 of 8</h1>
+                            <h1>Step 3 of 9</h1>
                         </div>
                         <div class="card-body">
                             @include('alerts.success')

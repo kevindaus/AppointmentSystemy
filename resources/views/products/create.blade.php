@@ -1,13 +1,14 @@
 @extends('layouts.app', [
-    'namePage' => 'Back',
-    'namePageLink' => route('staffs.index'),
-    'activePage' => 'register',
+    'namePage' => 'Products',
+    'namePageLink' => route('products.index'),
+    'class' => 'sidebar-mini',
+    'activePage' => 'product',
     'backgroundImage' => "/images/honda_logo.png",
 ])
 
 @section('content')
     <div class="panel-header panel-header-md">
-        <h1 class="text-white text-center">{{ __('Add new staff') }}</h1>
+        <h1 class="text-white text-center">{{ __('Create new product') }}</h1>
     </div>
     <div class="content">
         <div class="container">
@@ -16,13 +17,14 @@
                     <br>
                     <div class="card card-signup text-center">
                         <div class="card-header ">
+
                         </div>
                         <div class="card-body">
                             @include('alerts.success')
                             <br>
-                            <form method="POST" action="{{ route('staffs.store') }}" class="row text-left">
+                            <form method="POST" action="{{ route('products.store') }}" class="row text-left" enctype="multipart/form-data">
                                 @csrf
-                                {!! form($staffForm) !!}
+                                {!! form($createProductForm) !!}
                             </form>
                         </div>
                     </div>

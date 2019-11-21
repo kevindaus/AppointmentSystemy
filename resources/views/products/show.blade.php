@@ -1,8 +1,8 @@
 @extends('layouts.app', [
-    'namePage' => 'Back',
+    'namePage' => 'Products',
     'namePageLink' => route("products.index"),
     'class' => 'sidebar-mini',
-    'activePage' => 'customers',
+    'activePage' => 'product',
     'backgroundImage' => "/images/honda_logo.png",
   ])
 
@@ -18,18 +18,33 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive table-bordered">
+                            <img src="{{asset('storage/'.$productDetails['picture'])}}" alt="" class="img img-thumbnail">
                             <table class="table">
                                 <tbody>
-                                @foreach($productDetails as $key=>$val)
-                                    <tr>
-                                        <td>
-                                            {{ \App\Helpers\StringHelper::labelify($key) }}
-                                        </td>
-                                        <td>
-                                            {{ $product->$key  }}
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                <tr>
+                                    <td>
+                                        Name
+                                    </td>
+                                    <td>
+                                        {{ $product->name  }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Description
+                                    </td>
+                                    <td>
+                                        {{ $product->description  }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Specification
+                                    </td>
+                                    <td>
+                                        {{ $product->specification  }}
+                                    </td>
+                                </tr>
                                 </tbody>
                             </table>
                         </div>

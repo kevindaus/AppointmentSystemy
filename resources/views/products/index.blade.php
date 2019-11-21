@@ -5,7 +5,13 @@
     'activePage' => 'product',
     'backgroundImage' => "/images/honda_logo.png",
   ])
-
+@push('js')
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#product-table').DataTable();
+        });
+    </script>
+@endpush
 @section('content')
     <div class="panel-header panel-header-sm">
     </div>
@@ -18,7 +24,7 @@
                             <p class="float-left mt-2">
                                 Products
                             </p>
-                            <a href="{{route('staffs.create')}}" class="btn btn-sm btn-primary float-right">
+                            <a href="{{route('products.create')}}" class="btn btn-sm btn-primary float-right">
                                 Add new
                             </a>
                             <div class="clearfix"></div>
@@ -26,10 +32,16 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table" id="product-table">
                                 <thead class=" text-primary">
                                 <th>
+                                    Picture
+                                </th>
+                                <th>
                                     Name
+                                </th>
+                                <th>
+                                    Price
                                 </th>
                                 <th>
                                     Description
@@ -44,8 +56,14 @@
                                 <tbody>
                                 @foreach($allProducts as $currentProduct)
                                     <tr>
+                                        <td class="img-container" style="width: 250px">
+                                            <img src="{{asset('storage/'.$currentProduct->picture)}}" alt="" class="img img-thumbnail">
+                                        </td>
                                         <td>
                                             {{ $currentProduct->name  }}
+                                        </td>
+                                        <td>
+                                            {{ $currentProduct->price  }}
                                         </td>
                                         <td>
                                             {{ $currentProduct->description  }}

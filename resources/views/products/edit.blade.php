@@ -20,7 +20,7 @@
                         <div class="card-body">
                             @include('alerts.success')
                             <br>
-                            <form method="POST" action="{{ route('products.edit',['product'=>$product]) }}" class="row text-left">
+                            <form method="POST" action="{{ route('products.update',['product'=>$product]) }}" class="row text-left" enctype="multipart/form-data">
                                 @csrf
                                 @method("PUT")
                                 {!! form($updateProductForm) !!}

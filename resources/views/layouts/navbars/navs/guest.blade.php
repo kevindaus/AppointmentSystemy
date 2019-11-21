@@ -20,7 +20,7 @@
         <li class="nav-item @if ($activePage == 'login') active @endif ">
           <a href="{{ route('login') }}" class="nav-link">
             <i class="now-ui-icons users_circle-08"></i>
-            {{ __("Login (Client)") }}
+            {{ __("Login") }}
           </a>
         </li>
       </ul>

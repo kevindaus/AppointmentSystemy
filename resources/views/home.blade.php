@@ -12,15 +12,15 @@
     <div class="content">
         <div class="row">
             <div class="col-md-6">
-                <div class="card  card-tasks">
+                <div class="card">
                     <div class="card-header ">
                         <h5 class="card-category"></h5>
                         <h4 class="card-title">Credit Applications</h4>
                     </div>
                     <div class="card-body ">
-                        <div class="table-full-width table-responsive">
+                        <div class="table-responsive ">
                             <table class="table">
-                                <thead>
+                                <thead class=" text-primary">
                                 <td>
                                     Name
                                 </td>
@@ -32,27 +32,19 @@
                                 </td>
                                 </thead>
                                 <tbody>
+                                @foreach($pending_application as $current_pending_application)
                                 <tr>
                                     <td>
-                                        John Doe
+                                        {{$current_pending_application->customer()->first()->getFullName()}}
                                     </td>
                                     <td>
-                                        {{ \Carbon\Carbon::now()->format("F d,y") }}
-
+                                        {{$current_pending_application->created_at->format("F d,Y") }}
                                     </td>
-                                    <td class="td-actions text-center">
-                                        <button type="button" rel="tooltip" title=""
-                                                class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral"
-                                                data-original-title="Edit Task">
-                                            <i class="now-ui-icons ui-2_settings-90"></i>
-                                        </button>
-                                        <button type="button" rel="tooltip" title=""
-                                                class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral"
-                                                data-original-title="Remove">
-                                            <i class="now-ui-icons ui-1_simple-remove"></i>
-                                        </button>
+                                    <td>
+                                        <a href="{{route('credit-applications.show',['credit_application'=>$current_pending_application])}}">View</a>
                                     </td>
                                 </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -74,24 +66,20 @@
                                     Name
                                 </th>
                                 <th>
-                                    Address
-                                </th>
-                                <th>
                                     Phone
                                 </th>
                                 </thead>
                                 <tbody>
+                                @foreach($staffs as $current_staff)
                                 <tr>
                                     <td>
-                                        Dakota Rice
+                                        {{$current_staff->getFullName()}}
                                     </td>
                                     <td>
-                                        Niger
-                                    </td>
-                                    <td>
-                                        Niger
+                                        {{$current_staff->phone_number}}
                                     </td>
                                 </tr>
+                                @endforeach
 
                                 </tbody>
                             </table>

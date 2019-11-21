@@ -21,6 +21,8 @@
   <!-- CSS Files -->
   <link href="{{ asset('assets') }}/css/bootstrap.min.css" rel="stylesheet" />
   <link href="/css/now-ui-dashboard.css" rel="stylesheet" />
+  <link href="/leaflet/leaflet.css" rel="stylesheet" />
+  <link href="/datatable/datatables.css" rel="stylesheet" />
 
 </head>
 <body class="{{ $class ?? '' }}">
@@ -43,6 +45,10 @@
   <script src="{{ asset('assets') }}/js/plugins/bootstrap-notify.js"></script>
   <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="{{ asset('assets') }}/js/now-ui-dashboard.js?v=1.3.0" type="text/javascript"></script>
+  {{-- leaflet --}}
+  <script src="/leaflet/leaflet.js?v=1.3.0" type="text/javascript"></script>
+  {{-- datatable --}}
+  <script src="/datatable/datatables.js?v=1.3.0" type="text/javascript"></script>
 
   @stack('js')
 </body>
