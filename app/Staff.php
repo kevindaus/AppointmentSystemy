@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Staff extends Model
 {
+    protected $table = "staffs";
     protected $guarded = [];
     const POSITION_BRANCH_MANAGER = 'branch_manager';
     const POSITION_CREDIT_RECEIVER = 'received_by_ci';
@@ -14,7 +15,7 @@ class Staff extends Model
 
     public function getFullName()
     {
-        return sprintf("%s. %s %s %s %s", $this->title, $this->first_name, $this->middle_name, $this->last_name, $this->suffix);
+        return sprintf("%s %s %s %s %s", $this->title, $this->first_name, $this->middle_name, $this->last_name, $this->suffix);
     }
 
     public function handled_payment()

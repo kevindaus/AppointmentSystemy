@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Sale extends Model
 {
+    const STATUS_APPROVED = 'approved';
     protected $guarded = [];
 
     public function credit_application()
@@ -21,6 +22,18 @@ class Sale extends Model
     public function product()
     {
         return $this->belongsTo(Product::class);
+    }
+
+    public function getLastPayment()
+    {
+        return PaymentHistory::where([
+            'sales_id' => $this->id
+        ])->orderBy(['id', 'DESC'])->first();
+    }
+
+    public function getCreditApplication()
+    {
+        return CreditApplication::find($this->credit_application_id)->firstOrFail();
     }
 
 }
