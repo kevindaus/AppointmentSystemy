@@ -11,7 +11,7 @@ class Customer extends Model
 
     public function getFullName()
     {
-        return sprintf("%s. %s %s %s %s", $this->title, $this->first_name, $this->middle_name, $this->last_name, $this->suffix);
+        return sprintf("%s %s %s %s %s", $this->title, $this->first_name, $this->middle_name, $this->last_name, $this->suffix);
     }
 
     public function getFullAddress()
