@@ -16,6 +16,10 @@ class DatabaseSeeder extends Seeder
         DB::table('users')->truncate();
 
         $this->call([ UsersTableSeeder::class]);
+        $this->call([ ProductSeeder::class]);
+        $this->call([ StaffSeeder::class]);
+        $this->call([ ProductSeeder::class]);
+        $this->call([ CreditApplicationSeeder::class]);
 
         DB::statement('SET FOREIGN_KEY_CHECKS=1');
     }

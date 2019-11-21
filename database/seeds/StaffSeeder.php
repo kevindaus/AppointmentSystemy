@@ -11,6 +11,7 @@ class StaffSeeder extends Seeder
      */
     public function run()
     {
-        //
+        // php artisan db:seed --class="StaffSeeder"
+        factory(\App\Staff::class, 3)->create();
     }
 }

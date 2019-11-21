@@ -11,6 +11,7 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-        //
+        // php artisan db:seed --class="ProductSeeder"
+        factory(\App\Product::class, 3)->create();
     }
 }

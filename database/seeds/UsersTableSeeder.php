@@ -12,11 +12,12 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        /* php artisan db:seed --class="UsersTableSeeder" */
         DB::table('users')->insert([
             'name' => 'Admin',
-            'email' => 'admin@nowui.com',
+            'email' => 'admin@appointmentsystem.com',
             'email_verified_at' => now(),
-            'password' => Hash::make('secret'),
+            'password' => Hash::make('password'),
             'created_at' => now(),
             'updated_at' => now()
         ]);
