@@ -11,7 +11,7 @@ $factory->define(\App\Customer::class, function (Faker $faker) {
         "first_name" => $faker->firstName,
         "middle_name" => $faker->lastName,
         "last_name" => $faker->lastName,
-        "suffix" => $faker->word,
+        "suffix" => 'Sr.',
         "birthday" => date("Y-m-d"),
         "facebook_account" => $faker->word,
         "civil_status" => 'single',
