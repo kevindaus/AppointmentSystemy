@@ -20,7 +20,7 @@ class CoMakerForm extends Form
             ->add('first_name', 'text')
             ->add('middle_name', 'text')
             ->add('last_name', 'text')
-            ->add('address', 'text')
+            ->add('address', 'textarea')
             ->add('relationship', 'select',[
                 'choices' => [
                     'Single' =>'Single',
@@ -33,8 +33,17 @@ class CoMakerForm extends Form
             ->add('legal_document_presented', 'text')
             ->add('identification_number', 'text')
             ->add('drivers_license', 'text')
-            ->add('first_signature_specimen', 'text')
-            ->add('second_signature_specimen', 'text')
-            ->add('third_signature_specimen', 'text');
+            ->add('first_signature_specimen', 'file', [
+                'wrapper' => ['class' => 'col-12 pt-2'],
+            ])
+            ->add('second_signature_specimen', 'file', [
+                'wrapper' => ['class' => 'col-12 pt-2'],
+            ])
+            ->add('third_signature_specimen', 'file', [
+                'wrapper' => ['class' => 'col-12 pt-2'],
+            ])
+            ->add('submit', 'submit', [
+                'wrapper' => ['class' => 'col-12'],
+            ]);
     }
 }

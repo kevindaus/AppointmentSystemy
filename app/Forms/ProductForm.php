@@ -10,9 +10,10 @@ class ProductForm extends Form
     {
         $this
             ->add('name', 'text')
-            ->add('description', 'text')
+            ->add('price', 'number')
             ->add('type', 'text')
-            ->add('picture', 'text')
+            ->add('picture', 'file')
+            ->add('description', 'textarea')
             ->add('specification', 'text');
     }
 }

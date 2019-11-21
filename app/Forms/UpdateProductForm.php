@@ -17,17 +17,22 @@ class UpdateProductForm extends ProductForm
             ->add('name', 'text',[
                 'default_value'=> $productModel->name,
             ])
-            ->add('description', 'text',[
+            ->add('price', 'number',[
+                'default_value'=> $productModel->price,
+            ])
+            ->add('description', 'textarea',[
                 'default_value'=> $productModel->description,
+                'wrapper' => ['class' => 'col-12 mt-3']
             ])
             ->add('type', 'text',[
                 'default_value'=> $productModel->type,
             ])
-            ->add('picture', 'text',[
-                'default_value'=> $productModel->picture,
+            ->add('picture', 'file',[
+                'wrapper' => ['class' => 'col-12 mt-3']
             ])
-            ->add('specification', 'text',[
+            ->add('specification', 'textarea',[
                 'default_value'=> $productModel->specification,
+                'wrapper' => ['class' => 'col-12 mt-3']
             ])
             ->add('submit', 'submit', [
                 'wrapper' => ['class' => 'col-12'],
