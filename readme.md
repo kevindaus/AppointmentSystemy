@@ -7,26 +7,39 @@ credit application allow to choose between ,
 existing customer 
 or
 new customer
-
 step 1
+@DONE
  
 
 @TODO 
 finish
 Credit application flow
+@DONE
 
 @TODO 
 = allow admin to see and approve a credit application
 - after approved , 
+@DONE
 
 @TODO - 
 - allow admin to see list of approved credit application
+@DONE
 
+@TODO - sales
+@DONE
+
+@TODO - 
+payment
+payment history
 
 @TODO - 
 show list of overdue payment
     - overdue amount , customer name , customer contact number , a button that will send notification 
      
+
+@TODO - bug
+when uploading file name same with existing file name 
+it will overrite the existing file 
 
 @TODO - 
 system auto notification setting , 
@@ -72,7 +85,6 @@ step 3
 
 credit-application/{credit-application-id}/choose-model/
 
-
 step 4
 
 credit-application/{credit-application-id}/computation-breakdown/
@@ -84,6 +96,13 @@ credit-application/{credit-application-id}/co-maker
 Step 6 
 credit-application/{credit-application-id}/customer-map-address/
 
+@TODO
+Update many to many 
+to belongs to
+
+@TODO 
+delete pivot table model
+--we dont need it
 
 @TODO
 /customer/all
@@ -98,6 +117,7 @@ credit-application/{credit-application-id}/customer-map-address/
 /credit-application/view/{credit-application-id}
     - show customer information , 
 
+@TODO - make pibot table uniq column
 
 
 @TODO - admin can view backend  , nothing else 

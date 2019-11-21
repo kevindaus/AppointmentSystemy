@@ -13,5 +13,7 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
     .copyDirectory('resources/images/', 'public/images')
+    .copyDirectory('resources/leaflet/', 'public/leaflet')
+    .copyDirectory('resources/datatable/', 'public/datatable')
     .sass('resources/sass/now-ui-dashboard.scss', 'public/css')
     .sass('resources/sass/app.scss', 'public/css');
