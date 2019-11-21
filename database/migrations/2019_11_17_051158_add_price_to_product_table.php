@@ -13,8 +13,8 @@ class AddPriceToProductTable extends Migration
      */
     public function up()
     {
-        Schema::table('product', function (Blueprint $table) {
-            //
+        Schema::table('products', function (Blueprint $table) {
+            $table->float('price')->default(0);
         });
     }
 
@@ -25,8 +25,5 @@ class AddPriceToProductTable extends Migration
      */
     public function down()
     {
-        Schema::table('product', function (Blueprint $table) {
-            //
-        });
     }
 }

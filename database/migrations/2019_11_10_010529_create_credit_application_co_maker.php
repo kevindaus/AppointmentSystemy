@@ -18,6 +18,8 @@ class CreateCreditApplicationCoMaker extends Migration
             $table->unsignedBigInteger('credit_application_id');
             $table->unsignedBigInteger('co_maker_id');
             $table->timestamps();
+
+//            $table->unique(['credit_application_id', 'co_maker_id']);
         });
     }
 

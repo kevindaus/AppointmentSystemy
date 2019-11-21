@@ -22,7 +22,6 @@ class CreateSalesTable extends Migration
             $table->float('tax_rate')->default(0);
             $table->string('status')->default('ongoing_payment');
             $table->float('remaining_balance')->default(0);
-            $table->unsignedBigInteger('last_payment')->nullable();
             $table->timestamps();
         });
     }

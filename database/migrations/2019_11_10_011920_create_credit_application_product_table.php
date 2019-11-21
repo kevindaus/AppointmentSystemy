@@ -18,6 +18,8 @@ class CreateCreditApplicationProductTable extends Migration
             $table->unsignedBigInteger('credit_application_id');
             $table->unsignedBigInteger('product_id');
             $table->timestamps();
+
+//            $table->unique(['credit_application_id', 'product_id']);
         });
     }
 

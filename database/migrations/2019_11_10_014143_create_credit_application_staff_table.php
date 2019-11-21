@@ -17,6 +17,7 @@ class CreateCreditApplicationStaffTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('credit_application_id');
             $table->unsignedBigInteger('staff_id');
+            $table->string('role')->nullable();
             $table->timestamps();
         });
     }

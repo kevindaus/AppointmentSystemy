@@ -23,12 +23,12 @@ class CreateCoMakersTable extends Migration
             $table->string("relationship")->nullable();
             $table->string("occupation")->nullable();
             $table->string("contact_number")->nullable();
-            $table->string("legal_document_presented");
+            $table->string("legal_document_presented")->nullable();
             $table->string("identification_number")->nullable();
             $table->string("drivers_license")->nullable();
-            $table->string("first_signature_specimen");// filename containing the signature
-            $table->string("second_signature_specimen");// filename containing the signature
-            $table->string("third_signature_specimen");// filename containing the signature
+            $table->string("first_signature_specimen")->nullable();// filename containing the signature
+            $table->string("second_signature_specimen")->nullable();// filename containing the signature
+            $table->string("third_signature_specimen")->nullable();// filename containing the signature
 
             $table->timestamps();
         });
