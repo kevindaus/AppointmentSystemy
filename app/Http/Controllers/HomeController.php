@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\CreditApplication;
+use App\Staff;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +25,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $pendingApplication = CreditApplication::where([
+            'application_status' => 'pending',
+        ])->get();
+        $staffs = Staff::all();
+        return view('home')->with([
+            'pending_application' => $pendingApplication,
+            'staffs' => $staffs
+        ]);
     }
 }

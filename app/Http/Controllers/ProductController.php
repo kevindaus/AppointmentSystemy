@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Forms\CreateProductForm;
+use App\Forms\StaffForm;
 use App\Forms\UpdateProductForm;
 use App\Forms\UpdateStaffForm;
 use App\Product;
@@ -26,9 +28,15 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(FormBuilder $formBuilder)
     {
-        //
+        $createProductForm = $formBuilder->create(CreateProductForm::class, [
+            'method' => 'POST',
+            'enctype' => "multipart/form-data",
+            'url' => route('products.store')
+        ]);
+
+        return view('products.create')->with(compact('createProductForm'));
     }
 
     /**
@@ -39,7 +47,26 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'description' => ' ',
+            'type' => 'required',
+            'picture' => 'required|file',
+            'specification' => ' '
+        ]);
+
+        $uploadedFile = $validatedData['picture'];
+        $fileName = $uploadedFile->getClientOriginalName();
+        $uploadedFile->move(storage_path("app/public"), $uploadedFile->getClientOriginalName());
+        $product = new Product();
+        $product->name = $validatedData['name'];
+        $product->description = $validatedData['description'];
+        $product->type = $validatedData['type'];
+        $product->specification = $validatedData['specification'];
+        $product->picture = $fileName;
+        $product->save();
+
+        return redirect(url()->previous())->with(['status' => 'Product created']);
     }
 
     /**
@@ -52,7 +79,7 @@ class ProductController extends Controller
     {
         $productDetails = $product->toArray();
         unset($productDetails['id']);
-        unset($productDetails['picture']);
+
 
         return view('products.show')->with(compact('product', 'productDetails'));
     }
@@ -83,16 +110,32 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        $request->validate([
-            "id"=> "",
-            "name"=> "required",
-            "description"=> "",
-            "type"=> "required",
-            "picture"=> "",
-            "specification"=> "",
-            "created_at"=> "",
-            "updated_at"=> "",
+        $validatedData = $request->validate([
+            "name" => "required",
+            "description" => " ",
+            "price" => " ",
+            "type" => "required",
+            "picture" => "file",
+            "specification" => " ",
+            "created_at" => " ",
+            "updated_at" => " ",
         ]);
+        if (isset($validatedData['picture'])) {
+            $uploadedFile = $validatedData['picture'];
+            $fileName = $uploadedFile->getClientOriginalName();
+            $uploadedFile->move(storage_path("app/public"), $uploadedFile->getClientOriginalName());
+            $product->picture = $fileName;
+        }
+        $product->name = $validatedData['name'];
+        $product->description = $validatedData['description'];
+        $product->type = $validatedData['type'];
+        $product->specification = $validatedData['specification'];
+        $product->price = $validatedData['price'];
+        $product->save();
+
+        return redirect(url()->previous())->with(['status' => 'Product information updated']);
+
+
     }
 
     /**
