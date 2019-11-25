@@ -2,7 +2,7 @@
     'namePage' => 'Payments',
     'namePageLink' => route('staffs.index'),
     'class' => 'sidebar-mini',
-    'activePage' => 'credit-application',
+    'activePage' => 'overdue',
     'backgroundImage' => "/images/honda_logo.png",
   ])
 

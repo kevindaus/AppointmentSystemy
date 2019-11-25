@@ -25,11 +25,16 @@
                         @include('alerts.success')
                         <h4 class="card-title">
                             <p class="float-left mt-2">
-                                Staffs
+                                <a href="{{ route('payment.create') }}" class="btn btn-sm btn-primary">
+                                    Make Payment
+                                </a>
                             </p>
-                            <a href="{{route('staffs.create')}}" class="btn btn-sm btn-primary float-right">
-                                Add new
-                            </a>
+                            <p class="float-right mt-2">
+                                <a href="{{ route('payment.overdue') }}" class="btn btn-sm btn-primary">
+                                    Overdue
+                                </a>
+                            </p>
+
                             <div class="clearfix"></div>
                         </h4>
                     </div>
@@ -39,27 +44,30 @@
                             <table class="table" id="payment-table">
                                 <thead class=" text-primary">
                                 <th>
-                                    Name
+                                    Customer
                                 </th>
                                 <th>
-                                    Action
+                                    Payment
+                                </th>
+                                <th>Received by</th>
+                                <th>
+                                    Date
                                 </th>
                                 </thead>
                                 <tbody>
-                                @foreach($allStaff as $currentStaff)
+                                @foreach($payments as $currentPayment)
                                     <tr>
                                         <td>
-                                            {{ $currentStaff->getFullName()  }}
+                                            {{ $currentPayment->getCustomer()->getFullName()  }}
                                         </td>
                                         <td>
-                                            <a href="{{route('staffs.edit',['staff'=>$currentStaff])}}">Update</a> |
-                                            <a href="#" class="delete-staff-link">Delete</a>
-                                            <form class="{{$currentStaff->id}}_delete"
-                                                  action="{{route('staffs.destroy',['staff'=>$currentStaff->id])}}"
-                                                  method="POST">
-                                                @csrf
-                                                @method('delete')
-                                            </form>
+                                            {{ $currentPayment->amount  }}
+                                        </td>
+                                        <td>
+                                            {{ $currentPayment->getStaff()->getFullName()  }}
+                                        </td>
+                                        <td>
+                                            {{ $currentPayment->date_received->format("F d.Y") }}
                                         </td>
                                     </tr>
                                 @endforeach

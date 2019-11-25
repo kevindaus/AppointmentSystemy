@@ -2,10 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Forms\CreditApplication\ApprovalForm;
+use App\Forms\PaymentForm;
+use App\PaymentHistory;
+use App\Repository\PaymentRepository;
+use App\Sale;
 use Illuminate\Http\Request;
+use Kris\LaravelFormBuilder\FormBuilder;
 
 class PaymentController extends Controller
 {
+    private $paymentRepository;
+
+    /**
+     * PaymentController constructor.
+     * @param $paymentRepository
+     */
+    public function __construct(PaymentRepository $paymentRepository)
+    {
+        $this->paymentRepository = $paymentRepository;
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -14,6 +32,10 @@ class PaymentController extends Controller
     public function index()
     {
 
+        $payments = PaymentHistory::all();
+        return view('payment.index')->with([
+            'payments'=>$payments
+        ]);
     }
 
     /**
@@ -21,26 +43,48 @@ class PaymentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(FormBuilder $formBuilder)
     {
-        //
+        $paymentForm = $formBuilder->create(Paymentform::class, [
+            'method' => 'POST',
+            'url' => route('payment.store')
+        ]);
+        return view('payment.make_payment')->with([
+            'paymentForm' => $paymentForm
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'sale_id' => 'required',
+            'amount' => 'required|min:0',
+            'date_received' => '',
+            'received_by' => ''
+        ]);
+        $sale = Sale::findOrFail($validatedData['sale_id']);
+        /*reduce remaining balance */
+        $updatedBalance = floatval($sale->remaining_balance);
+        $sale->remaining_balance = $updatedBalance - floatval($validatedData['amount']);
+        $sale->save();
+        PaymentHistory::create($validatedData);
+
+
+        return redirect(url()->previous())->with([
+            'status' => 'Payment record created. '
+        ]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -51,7 +95,7 @@ class PaymentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -62,8 +106,8 @@ class PaymentController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -74,7 +118,7 @@ class PaymentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -82,11 +126,13 @@ class PaymentController extends Controller
         //
     }
 
-    public function due_payment()
+    public function overdue()
     {
-        /* @TODO - show list of unpaid dues*/
-        $overDuecreditApplications = CreditApplication::all();// get all overdue
-        return view('payment.over_due')->with(compact('overDuecreditApplications'));
+        $overDuePayments = $this->paymentRepository->getOverDuePayments();
+
+        return view('payment.over_due')->with([
+            'overDuePayments'=>$overDuePayments
+        ]);
     }
 
     public function send_due_notification(DuePaymentSMSNotifier $duePaymentSMSNotifier)

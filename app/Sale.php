@@ -24,11 +24,11 @@ class Sale extends Model
         return $this->belongsTo(Product::class);
     }
 
-    public function getLastPayment()
+    public function getLastPaymentHistory()
     {
         return PaymentHistory::where([
-            'sales_id' => $this->id
-        ])->orderBy(['id', 'DESC'])->first();
+            'sale_id' => $this->id
+        ])->orderBy('id', 'DESC')->first();
     }
 
     public function getCreditApplication()

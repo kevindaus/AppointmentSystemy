@@ -36,14 +36,20 @@
                     <p>{{ __('Sales') }}</p>
                 </a>
             </li>
+            <li class=" @if ($activePage == 'payment') active @endif">
+                <a href="{{ route('payment.index') }}">
+                    <i class="fa fa-money-bill-wave"></i>
+                    <p>{{ __('Payment') }}</p>
+                </a>
+            </li>
             <li class="@if ($activePage == 'product') active @endif">
                 <a href="{{ route('products.index') }}">
                     <i class="now-ui-icons transportation_bus-front-12"></i>
                     <p>{{ __('Products') }}</p>
                 </a>
             </li>
-            <li class="@if ($activePage == 'due_payment') active @endif">
-                <a href="{{ route('due-payment') }}">
+            <li class="@if ($activePage == 'overdue') active @endif">
+                <a href="{{ route('payment.overdue') }}">
                     <i class="now-ui-icons ui-2_time-alarm"></i>
                     <p>{{ __('Due Payment') }}</p>
                 </a>

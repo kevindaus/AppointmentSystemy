@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('due-payment', 'PaymentController@due_payment')->name("due-payment");
+Route::get('/payment/overdue', 'PaymentController@overdue')->name("payment.overdue");
 Route::get('/credit-applications/pending', 'CreditApplicationController@pending')->name('credit-applications.pending');
 Route::get('/credit-applications/approve/{credit_application}', 'CreditApplicationController@approve')->name('credit-applications.approve');
 Route::post('/credit-applications/approve/{credit_application}/success', 'CreditApplicationController@save_approval')->name('credit-applications.save_approval');
