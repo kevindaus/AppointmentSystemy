@@ -21,7 +21,7 @@
                             <table class="table">
                                 <thead class=" text-primary">
                                 <th>
-                                    Name
+                                    Customer
                                 </th>
                                 <th>
                                     Address
@@ -30,32 +30,26 @@
                                     Phone
                                 </th>
                                 <th class="text-right">
-                                    Salary
-                                </th>
-                                <th>
                                     Action
                                 </th>
                                 </thead>
                                 <tbody>
-                                @foreach($overDuecreditApplications as $currentOverdueCreditApplication)
+                                @foreach($overDuePayments as $currentOverdueSale)
+                                    @php
+                                        $currentCustomer = $currentOverdueSale->getCustomer();
+                                    @endphp
                                     <tr>
                                         <td>
-                                            {{ $currentCreditApplication->customer->getFullName()  }}
+                                            {{ $currentCustomer->getFullName()  }}
                                         </td>
                                         <td>
-                                            {{ $currentCreditApplication->customer->getFullAddress()  }}
+                                            {{ $currentCustomer->getFullAddress()  }}
                                         </td>
                                         <td>
-                                            Oud-Turnhout
-                                        </td>
-                                        <td class="text-right">
-                                            $36,738
+                                            {{ $currentCustomer->mobile_number  }}
                                         </td>
                                         <td>
-                                            herea
-                                            <a href="edit">Update</a>
-                                            <a href="edit">Approve</a>
-                                            <a href="edit">Deny</a>
+                                            <a href="{{route('notification')}}">Send Notification</a>
                                         </td>
                                     </tr>
                                 @endforeach
