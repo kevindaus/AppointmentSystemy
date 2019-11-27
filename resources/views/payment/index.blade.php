@@ -1,8 +1,8 @@
 @extends('layouts.app', [
-    'namePage' => 'Staffs',
-    'namePageLink' => route('staffs.index'),
+    'namePage' => 'Payments',
+    'namePageLink' => route('payment.overdue'),
     'class' => 'sidebar-mini',
-    'activePage' => 'staff',
+    'activePage' => 'payment.index',
     'backgroundImage' => "/images/honda_logo.png",
   ])
 

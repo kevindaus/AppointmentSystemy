@@ -4,60 +4,38 @@ return [
 
     // All the sections for the settings page
     'sections' => [
-        'app' => [
-            'title' => 'General Settings',
-            'descriptions' => 'Application general settings.',
-            'icon' => 'fa fa-cog',
-            'inputs' => [
-                [
-                    'name' => 'app_name', // unique key for setting
-                    'type' => 'text', // type of input can be text, number, textarea, select, boolean, checkbox etc.
-                    'label' => 'App Name', // label for input
-                    // optional properties
-                    'placeholder' => 'Application Name', // placeholder for input
-                    'class' => 'form-control', // override global input_class
-                    'style' => '', // any inline styles
-                    'rules' => 'required|min:2|max:20', // validation rules for this input
-                    'value' => 'QCode', // any default value
-                    'hint' => 'You can set the app name here' // help block text for input
-                ],
-                [
-                    'name' => 'logo',
-                    'type' => 'image',
-                    'label' => 'Upload logo',
-                    'hint' => 'Must be an image and cropped in desired size',
-                    'rules' => 'image|max:500',
-                    'disk' => 'public', // which disk you want to upload
-                    'path' => 'app', // path on the disk,
-                    'preview_class' => 'thumbnail',
-                    'preview_style' => 'height:40px'
-                ]
-            ]
-        ],
+
         'sms' => [
             'title' => 'SMS API Gateway Settings',
             'descriptions' => 'API Settings for the SMS Gateway provider',
             'icon' => 'fa fa-envelope', // (optional)
             'inputs' => [
                 [
-                    'name' => 'API_USERNAME',
+                    'name' => 'YOUR_API_KEY',
                     'type' => 'text',
-                    'label' => 'API Username',
-                    'placeholder' => 'Username for API',
+                    'label' => '',
+                    'placeholder' => 'API Key from SEMAPHONE',
                     'class' => 'form-control',
                     'style' => '',
-                    'rules' => 'required|min:2|max:20',
-                    'hint' => 'Username provided by SMS gateway provider'
-                ],
+                    'rules' => 'required'
+                ]
+            ]
+        ],
+        'message'=>[
+            'title' => 'Message Template',
+            'descriptions' => 'Template of messages sent',
+            'icon' => 'fa fa-cog', // (optional)
+            'inputs' => [
                 [
-                    'name' => 'API_PASSWORD',
-                    'type' => 'text',
-                    'label' => 'API Password',
-                    'placeholder' => 'Password for API',
+                    'name' => 'overdue_notification_message_template',
+                    'type' => 'textarea',
+                    'label' => 'Overdue Notification Message Template',
+                    'placeholder' => 'Message to send on overdue payment',
                     'class' => 'form-control',
                     'style' => '',
-                    'rules' => 'required|min:2|max:20',
-                    'hint' => 'Password provided by SMS gateway provider'
+                    'rules' => 'required',
+                    'hint' => 'placeholder : [name] , [overdue_date] ,[product] . This items will be replaced with actual value',
+                    'value' => 'Hi [name] , your payment for [product] is overdue. Overdue date : [overdue_date]'
                 ]
             ]
         ]

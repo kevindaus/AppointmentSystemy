@@ -1,6 +1,7 @@
 @extends('layouts.app', [
     'class' => 'sidebar-mini ',
     'namePage' => 'Create user',
+    'namePageLink' => route('user.index'),
     'activePage' => 'user',
     'activeNav' => '',
 ])

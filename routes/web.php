@@ -21,7 +21,8 @@ Route::get('/credit-applications/pending', 'CreditApplicationController@pending'
 Route::get('/credit-applications/approve/{credit_application}', 'CreditApplicationController@approve')->name('credit-applications.approve');
 Route::post('/credit-applications/approve/{credit_application}/success', 'CreditApplicationController@save_approval')->name('credit-applications.save_approval');
 Route::get('/credit-applications/deny/{credit_application}', 'CreditApplicationController@deny')->name('credit-applications.deny');
-Route::get('/notify/overdue/{customer}' , 'NotificationController@sendNotification')->name('notify.overdue');
+Route::post('/notify/overdue/' , 'NotificationController@sendNotification')->name('notify.overdue');
+Route::get('/notify/history/' , 'NotificationController@history')->name('notify.history');
 
 Route::resource('credit-applications', 'CreditApplicationController');
 Route::resource('customers', 'CustomerController');

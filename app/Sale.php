@@ -29,7 +29,7 @@ class Sale extends Model
     {
         return PaymentHistory::where([
             'sale_id' => $this->id
-        ])->orderBy('id', 'DESC')->first();
+        ])->get()->last();
     }
 
     public function getCreditApplication()
@@ -37,8 +37,37 @@ class Sale extends Model
         return CreditApplication::find($this->credit_application_id)->firstOrFail();
     }
 
+    public function getProduct()
+    {
+        $sqlQuery = <<<EOL
+        SELECT
+        products.id,
+        products.`name`,
+        products.description,
+        products.type,
+        products.picture,
+        products.specification,
+        products.created_at,
+        products.updated_at,
+        products.price
+        FROM
+        sales
+        INNER JOIN credit_applications ON sales.credit_application_id = credit_applications.id
+        INNER JOIN products ON sales.product_id = products.id
+        WHERE
+        sales.id = :sale_id
+EOL;
+        $res = Db::select(DB::raw($sqlQuery), ['sale_id' => $this->id]);
+        if (isset($res[0])) {
+            return $res[0];
+        }else{
+            return new NullProduct();
+        }
+    }
+
     public function getCustomer()
     {
+
         $sqlQuery = <<<EOL
         SELECT
         customers.id,
@@ -65,7 +94,12 @@ class Sale extends Model
         WHERE
         sales.id = :sale_id
 EOL;
-        return Db::select(DB::raw($sqlQuery),['sale_id'=>$this->id]);
+        $res = Db::select(DB::raw($sqlQuery), ['sale_id' => $this->id]);
+        if (isset($res[0])) {
+            return $res[0];
+        }else{
+            return new NullCustomer();
+        }
     }
 
 }

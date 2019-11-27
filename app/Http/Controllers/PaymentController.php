@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Forms\CreditApplication\ApprovalForm;
 use App\Forms\PaymentForm;
+use App\Notifier\DuePaymentSMSNotifier;
 use App\PaymentHistory;
 use App\Repository\PaymentRepository;
 use App\Sale;
@@ -130,21 +131,23 @@ class PaymentController extends Controller
     {
         $overDuePayments = $this->paymentRepository->getOverDuePayments();
 
+
         return view('payment.over_due')->with([
             'overDuePayments'=>$overDuePayments
         ]);
     }
-
-    public function send_due_notification(DuePaymentSMSNotifier $duePaymentSMSNotifier)
-    {
-        $username_api = setting('API_USERNAME');
-        $password_api = setting('API_PASSWORD');
-        $duePaymentSMSNotifier->setCredential($username_api, $password_api);
-
-        /* @TODO - get all overdued payment */
-        /* foreach  customer  , get their mobile number*/
-        /* prepare message  */
-        /* send message */
-        $duePaymentSMSNotifier->send();
-    }
+//
+//    public function send_due_notification(DuePaymentSMSNotifier $duePaymentSMSNotifier)
+//    {
+//        $username_api = setting('API_USERNAME');
+//        $password_api = setting('API_PASSWORD');
+//        $duePaymentSMSNotifier->setCredential($username_api, $password_api);
+//
+//
+//        /* @TODO - get all overdued payment */
+//        /* foreach  customer  , get their mobile number*/
+//        /* prepare message  */
+//        /* send message */
+//        $duePaymentSMSNotifier->send();
+//    }
 }

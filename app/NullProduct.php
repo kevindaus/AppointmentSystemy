@@ -12,5 +12,6 @@ class NullProduct
      */
     public function __construct()
     {
+
     }
 }

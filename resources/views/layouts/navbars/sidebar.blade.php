@@ -36,7 +36,7 @@
                     <p>{{ __('Sales') }}</p>
                 </a>
             </li>
-            <li class=" @if ($activePage == 'payment') active @endif">
+            <li class=" @if ($activePage == 'payment.index') active @endif">
                 <a href="{{ route('payment.index') }}">
                     <i class="fa fa-money-bill-wave"></i>
                     <p>{{ __('Payment') }}</p>
@@ -48,7 +48,7 @@
                     <p>{{ __('Products') }}</p>
                 </a>
             </li>
-            <li class="@if ($activePage == 'overdue') active @endif">
+            <li class="@if ($activePage == 'due.payment') active @endif">
                 <a href="{{ route('payment.overdue') }}">
                     <i class="now-ui-icons ui-2_time-alarm"></i>
                     <p>{{ __('Due Payment') }}</p>
@@ -58,6 +58,12 @@
                 <a href="{{ route('user.index') }}">
                     <i class="now-ui-icons design_bullet-list-67"></i>
                     <p> {{ __("User Management") }} </p>
+                </a>
+            </li>
+            <li class="@if ($activePage == 'notify.history') active @endif">
+                <a href="{{route('notify.history')}}">
+                    <i class="fa fa-bell"></i>
+                    <p>{{ __('Notification History') }}</p>
                 </a>
             </li>
             <li class="@if ($activePage == 'settings') active @endif">

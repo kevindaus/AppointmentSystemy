@@ -1,5 +1,6 @@
 @extends('layouts.app', [
     'namePage' => env('APP_NAME'),
+    'namePageLink' => route('home'),
     'class' => 'login-page sidebar-mini ',
     'activePage' => 'welcome',
     'backgroundImage' => "/images/honda_logo.png",

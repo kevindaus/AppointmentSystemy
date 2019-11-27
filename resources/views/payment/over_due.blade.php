@@ -1,8 +1,8 @@
 @extends('layouts.app', [
     'namePage' => 'Payments',
-    'namePageLink' => route('staffs.index'),
+    'namePageLink' => route('payment.overdue'),
     'class' => 'sidebar-mini',
-    'activePage' => 'overdue',
+    'activePage' => 'due.payment',
     'backgroundImage' => "/images/honda_logo.png",
   ])
 
@@ -14,6 +14,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
+                        @include('alerts.success')
                         <h4 class="card-title">Overdue Accounts</h4>
                     </div>
                     <div class="card-body">
@@ -29,27 +30,53 @@
                                 <th>
                                     Phone
                                 </th>
-                                <th class="text-right">
+                                <th>
+                                    Overdue Date
+                                </th>
+                                <th class="text-center">
                                     Action
                                 </th>
+
                                 </thead>
                                 <tbody>
                                 @foreach($overDuePayments as $currentOverdueSale)
                                     @php
-                                        $currentCustomer = $currentOverdueSale->getCustomer();
+                                        $currentSale = $currentOverdueSale['sale'];
+                                        $overdueDate = $currentOverdueSale['overdue_date'];
+                                        $currentCustomer = $currentSale->getCustomer();
+                                        $product = $currentSale->getProduct();
                                     @endphp
                                     <tr>
                                         <td>
-                                            {{ $currentCustomer->getFullName()  }}
+                                            {{ sprintf("%s %s %s %s",$currentCustomer->title , $currentCustomer->first_name , $currentCustomer->middle_name,$currentCustomer->last_name)  }}
                                         </td>
                                         <td>
-                                            {{ $currentCustomer->getFullAddress()  }}
+                                            {{
+                                            sprintf(
+                                                "%s %s %s %s %s %s" ,
+                                                $currentCustomer->house_number ,
+                                                $currentCustomer->street ,
+                                                $currentCustomer->barangay ,
+                                                $currentCustomer->municipality ,
+                                                $currentCustomer->province ,
+                                                $currentCustomer->zipcode
+                                            )
+                                            }}
                                         </td>
                                         <td>
                                             {{ $currentCustomer->mobile_number  }}
                                         </td>
                                         <td>
-                                            <a href="{{route('notification')}}">Send Notification</a>
+                                            {{ $overdueDate }}
+                                        </td>
+                                        <td>
+                                            <form action="{{route('notify.overdue')}}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="overdue_date" value="{{$overdueDate}}">
+                                                <input type="hidden" name="product_id" value="{{$product->id}}">
+                                                <input type="hidden" name="customer_id" value="{{$currentCustomer->id}}">
+                                                <input type="submit" name="submit" value="Send Notification" class="btn btn-primary">
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach

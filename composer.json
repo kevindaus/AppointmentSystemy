@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.2",
         "fideloper/proxy": "^4.0",
+        "kickstartph/semaphore-client": "^0.5.0",
         "kris/laravel-form-builder": "^1.22",
         "laravel-frontend-presets/now-ui-dashboard": "^1.0",
         "laravel/framework": "^6.0",

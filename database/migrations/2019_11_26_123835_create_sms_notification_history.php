@@ -15,6 +15,8 @@ class CreateSmsNotificationHistory extends Migration
     {
         Schema::create('sms_notification_history', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('recipient')->nullable();
+            $table->text('response')->nullable();
             $table->timestamps();
         });
     }

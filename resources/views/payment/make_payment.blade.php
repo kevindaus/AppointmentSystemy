@@ -1,8 +1,8 @@
 @extends('layouts.app', [
     'namePage' => 'Credit Applications',
-    'namePageLink' => route('credit-applications.index'),
+    'namePageLink' => route('payment.index'),
     'class' => 'sidebar-mini',
-    'activePage' => 'credit_application',
+    'activePage' => 'payment.index',
     'backgroundImage' => "/images/honda_logo.png",
   ])
 

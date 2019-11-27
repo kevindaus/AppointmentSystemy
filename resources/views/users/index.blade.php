@@ -1,5 +1,6 @@
 @extends('layouts.app', [
     'namePage' => 'Users',
+    'namePageLink' => route('user.index'),
     'class' => 'sidebar-mini',
     'activePage' => 'users',
     'activeNav' => '',
@@ -90,7 +91,7 @@
 @push('js')
   <script>
     $(document).ready(function() {
-      $(".delete-button").click(function(){ 
+      $(".delete-button").click(function(){
         var clickedButton = $( this );
         Swal.fire({
         title: 'Are you sure?',
