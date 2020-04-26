@@ -3,9 +3,7 @@
       Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
   -->
     <div class="logo">
-        <a href="{{route('home')}}" class="simple-text logo-mini">
-            Honda
-        </a>
+
         <a href="{{route('home')}}" class="simple-text logo-normal">
             {{ env('APP_NAME') }}
         </a>
