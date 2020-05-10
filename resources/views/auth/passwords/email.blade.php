@@ -34,7 +34,7 @@
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                             </div>
                             @error('email')
-                                <span style="display:block;" class="invalid-feedback" role="alert">
+                            <span style="display:block;" class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('email') }}</strong>
                                 </span>
                             @enderror
@@ -51,9 +51,9 @@
 
 
 @push('js')
-<script>
-    $(document).ready(function() {
-      demo.checkFullPageBackgroundImage();
-    });
-  </script>
+    <script>
+        $(document).ready(function() {
+            demo.checkFullPageBackgroundImage();
+        });
+    </script>
 @endpush

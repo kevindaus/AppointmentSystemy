@@ -15,6 +15,7 @@
         "laravel-frontend-presets/now-ui-dashboard": "^1.0",
         "laravel/framework": "^6.0",
         "laravel/tinker": "^1.0",
+        "laravel/ui": "^1.2",
         "qcod/laravel-app-settings": "^1.2",
         "ycs77/laravel-form-builder-bs4": "^1.0"
     },
