@@ -69,7 +69,6 @@ Route::post('application-form/{credit_application}/final-notes/{customer}', 'App
 /* Wizard Done*/
 Route::get('application-form/success', 'ApplicationFormController@application_done')->name("application_done");
 
-
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('user', 'UserController', ['except' => ['show']]);
     Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
