@@ -1,3 +1,38 @@
+@TODO
+After customer submits the form
+the system sends notification to customer regarding his/her application
+
+@TODO
+the admin approves or denies an application
+
+
+@TODO
+Menu Update
+
+Home
+Application
+    View Records
+    Select Appointments
+Payment
+    Search
+    View
+Notification
+    Send Notification
+
+
+@TODO
+List of users
+    Client
+    Employee
+    CIBI Officer
+    Manager
+    Cashier
+
+
+@TODO
+Each user type can see different dashboard interface .
+Different menu
+
 
 @TODO -
 credit application allow to choose between ,

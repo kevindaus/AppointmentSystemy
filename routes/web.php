@@ -15,6 +15,7 @@ Route::get('/', function () {
     return redirect(route('login'));
 });
 Auth::routes();
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/payment/overdue', 'PaymentController@overdue')->name("payment.overdue");
 Route::get('/credit-applications/pending', 'CreditApplicationController@pending')->name('credit-applications.pending');
@@ -68,6 +69,12 @@ Route::post('application-form/{credit_application}/final-notes/{customer}', 'App
 
 /* Wizard Done*/
 Route::get('application-form/success', 'ApplicationFormController@application_done')->name("application_done");
+
+Route::get('users',[
+    'as'=>'user.index',
+    'uses'=>'UserController@index',
+    'except' => ['show']
+]);
 
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('user', 'UserController', ['except' => ['show']]);
